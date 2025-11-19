@@ -1,4 +1,4 @@
-namespace SenteRecruitmentTask.Infrastructure
+namespace DbMetaTool.Infrastructure
 {
     /// <summary>
     /// Klasa pomocnicza do obsługi skryptów SQL

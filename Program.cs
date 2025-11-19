@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-
 namespace DbMetaTool
 {
     public static class Program
@@ -11,6 +8,7 @@ namespace DbMetaTool
         // DbMetaTool update-db --connection-string "..." --scripts-dir "C:\scripts"
         public static int Main(string[] args)
         {
+
             if (args.Length == 0)
             {
                 Console.WriteLine("Użycie:");
@@ -86,7 +84,9 @@ namespace DbMetaTool
             // 2) Wczytaj i wykonaj kolejno skrypty z katalogu scriptsDirectory
             //    (tylko domeny, tabele, procedury).
             // 3) Obsłuż błędy i wyświetl raport.
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+             var builder = new DbMetaTool.Services.DatabaseBuilder();
+            builder.BuildDatabase(databaseDirectory, scriptsDirectory);
         }
 
         /// <summary>
@@ -94,11 +94,9 @@ namespace DbMetaTool
         /// </summary>
         public static void ExportScripts(string connectionString, string outputDirectory)
         {
-            // TODO:
-            // 1) Połącz się z bazą danych przy użyciu connectionString.
-            // 2) Pobierz metadane domen, tabel (z kolumnami) i procedur.
-            // 3) Wygeneruj pliki .sql / .json / .txt w outputDirectory.
-            throw new NotImplementedException();
+            var exporter = new DbMetaTool.Services.MetadataExporter();
+            exporter.ExportScripts(connectionString, outputDirectory);
+            Console.WriteLine("Eksport metadanych zakończony.");
         }
 
         /// <summary>
@@ -110,7 +108,11 @@ namespace DbMetaTool
             // 1) Połącz się z bazą danych przy użyciu connectionString.
             // 2) Wykonaj skrypty z katalogu scriptsDirectory (tylko obsługiwane elementy).
             // 3) Zadbaj o poprawną kolejność i bezpieczeństwo zmian.
-            throw new NotImplementedException();
+            var updater = new DbMetaTool.Services.DatabaseUpdater();
+            updater.UpdateDatabase(connectionString, scriptsDirectory);
+            Console.WriteLine("Aktualizacja bazy zakończona.");
         }
     }
 }
+
+

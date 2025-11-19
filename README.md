@@ -1,4 +1,4 @@
-# ❗ komentarze i opis w języku polskim, zgodnie ze schematem w Program.cs
+# ❗ Komentarze i opis w języku polskim, zgodnie ze schematem w Program.cs
 
 # DbMetaTool
 
@@ -32,19 +32,20 @@ Pozostałe obiekty (indeksy, triggery, constraints) są pominięte.
 
 ▶️ Użycie
 1. Budowa nowej bazy danych ze skryptów
-```bash
-dotnet run -- build-db --db-dir "/ścieżka/do/katalogu/bazy" --scripts-dir "/ścieżka/do/skryptów"
+    ```bash
+    dotnet run -- build-db --db-dir "/ścieżka/do/katalogu/bazy" --scripts-dir "/ścieżka/do/skryptów"
+
 Tworzy pustą bazę Firebird i wykonuje skrypty SQL (domeny, tabele, procedury).
 2. Eksport metadanych z istniejącej bazy
-```bash
-dotnet run -- export-scripts --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --output-dir "/ścieżka/do/output"
+    ```bash
+    dotnet run -- export-scripts --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --output-dir "/ścieżka/do/output"
 Generuje pliki:
 domains.sql
 tables.sql
 procedures.sql
 3. Aktualizacja istniejącej bazy na podstawie skryptów
-```bash
-dotnet run -- update-db --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --scripts-dir "/ścieżka/do/skryptów"
+    ```bash
+    dotnet run -- update-db --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --scripts-dir "/ścieżka/do/skryptów"
 Wykonuje skrypty w poprawnej kolejności (domeny → tabele → procedury).
 
 ---

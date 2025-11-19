@@ -24,10 +24,11 @@ Pozostałe obiekty (indeksy, triggery, constraints) są pominięte.
    ```bash
    git clone https://github.com/<twoje-repo>/DbMetaTool.git
    cd DbMetaTool
+   ```
 2. Zbuduj projekt:
     ```bash
     dotnet build
-
+    ```
 ---
 
 ▶️ Użycie

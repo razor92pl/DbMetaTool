@@ -28,28 +28,27 @@ Pozostałe obiekty (indeksy, triggery, constraints) są pominięte.
     ```bash
     dotnet build
 
+---
 
 ▶️ Użycie
 1. Budowa nowej bazy danych ze skryptów
-bash
+```bash
 dotnet run -- build-db --db-dir "/ścieżka/do/katalogu/bazy" --scripts-dir "/ścieżka/do/skryptów"
 Tworzy pustą bazę Firebird i wykonuje skrypty SQL (domeny, tabele, procedury).
 2. Eksport metadanych z istniejącej bazy
-bash
+```bash
 dotnet run -- export-scripts --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --output-dir "/ścieżka/do/output"
 Generuje pliki:
 domains.sql
 tables.sql
 procedures.sql
 3. Aktualizacja istniejącej bazy na podstawie skryptów
-bash
+```bash
 dotnet run -- update-db --connection-string "User=SYSDBA;Password=masterkey;Database=/ścieżka/do/database.fdb;DataSource=localhost;Port=3050;Dialect=3;" --scripts-dir "/ścieżka/do/skryptów"
 Wykonuje skrypty w poprawnej kolejności (domeny → tabele → procedury).
-🧪 Test poprawności
-Utwórz ręcznie bazę z kilkoma domenami, tabelami i procedurami.
-Wyeksportuj z niej skrypty (export-scripts).
-Na ich podstawie zbuduj nową bazę (build-db).
-Obie bazy powinny być identyczne strukturalnie
+
+---
+
 ℹ️ Uwagi
 Obsługiwane są tylko domeny, tabele i procedury.
 Błędy wykonywania skryptów zapisywane są w pliku error.log.
